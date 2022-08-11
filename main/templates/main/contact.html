@@ -1,0 +1,103 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block titleblock %}
+<title>LEAP - Liên hệ</title>
+{% endblock titleblock %}
+
+{% block bodyblock %}
+<main id="main">
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs" data-aos="fade-in">
+  <div class="container">
+    <h2>Liên hệ</h2>
+    <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div data-aos="fade-up">
+    <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.656439121416!2d106.7590387148372!3d10.913693359629162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d90bda0ad575%3A0x47c4915c3c484a8e!2zTEVBUCAtIFRp4bq_bmcgQW5oIFRy4bq7IEVt!5e0!3m2!1sen!2s!4v1653364908864!5m2!1sen!2s" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="container" data-aos="fade-up">
+
+    <div class="row mt-5">
+
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Địa chỉ:</h4>
+            <p>15/36B Nguyễn Thị Phố, phường Tân Đông Hiệp, Thành phố Dĩ An, Bình Dương</p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>vuhien694@gmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Điện thoại:</h4>
+            <p>0963 645 899</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form action="{% url 'main:contact.html' %}" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              {{form.name}}
+            </div>
+            <div class="col-md-6 form-group">
+              {{form.phone_number}}
+            </div>
+          </div>
+          <div class="row mt-3">
+          <div class="col-12 form-group">
+            {{form.email}}
+          </div>
+          </div>
+          <div class="form-group mt-3">
+            {{form.subject}}
+          </div>
+          <div class="form-group mt-3">
+            {{form.message}}
+          </div>
+
+          <div class="col-12 py-3 text-center"><button type="submit" class="btn btn-success">Send Message</button></div>
+        </form>
+      </div>
+      {% if success %}
+      <div class="container p-5">
+        <div class="row no-gutters">
+          <div class="col-lg-6 col-md-12 m-auto">
+            <div class="alert alert-success fade show" role="alert">
+              <button type="button" class="btn-close" aria-label="Close">
+              </button>
+              <h4 class="alert-heading">Thành công</h4>
+              <p>{{result}}</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      {%else%}
+      <p>{{form.error}}</p>
+      {% endif %}
+
+
+
+    </div>
+
+  </div>
+</section><!-- End Contact Section -->
+</main>
+{% endblock bodyblock %}

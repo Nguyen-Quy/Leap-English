@@ -1,0 +1,8 @@
+- thanh toán
+- đăng ký - đăng nhập
+- nội dung khóa học
+- Trang chủ -> courses -> course_details -> bắt đầu học -> thanh toán (validate user) -> đăng nhập -> nội dung khóa học
+
+course_details.html (line 152) -> signup
+xem lại khóa học đã đăng ký
+khuyến mãi khi đăng ký

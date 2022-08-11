@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block titleblock %}
+<title>LEAP - Đăng nhập</title>
+{% endblock %}
+
+{% block header %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href="{% url 'main:index.html'%}">LEAP</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a class="active" href="{% url 'main:index.html'%}">Trang chủ</a></li>
+        <li><a href="{% url 'main:about.html'%}">Về chúng tôi</a></li>
+        <li><a href="{% url 'courses:courses'%}">Khóa học</a></li>
+        <li><a href="{% url 'main:trainers.html'%}">Giáo viên</a></li>
+
+        <li><a href="{% url 'main:contact.html'%}">Liên hệ</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+    <a href="{% url 'register:register.html'%}" class="get-started-btn">Đăng ký</a>
+
+  </div>
+</header>
+<!-- End Header -->
+{% endblock header %}
+
+{% block bodyblock %}
+<div class="container" style="margin-top: 100px"></div>
+<div class="container-fluid mb-4" style="max-width: 500px">
+  {% if user.is_authenticated %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">Đăng nhập thành công</div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {% endif %}
+  <div class="container">
+    <div class="text-center fh5co_heading py-2" style="font-size: 20px;font-weight:bold">Đăng nhập</div>
+    <form method="post" class="form-group">
+      {% csrf_token %}
+      {{form|crispy}}
+      <p>Chưa có tài khoản? Đăng ký tại <a href="/register">đây</a></p>
+      <button type="submit" class="btn btn-success">Đăng nhập</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
