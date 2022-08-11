@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  {% block titleblock %}
+  {% endblock titleblock %}
+  
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Tahoma:300,300i,400,400i,600,600i,700,700i|Verdana:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'main/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  {% block header %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="{% url 'main:index.html'%}">LEAP</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="active" href="{% url 'main:index.html'%}">Trang chủ</a></li>
+          <li><a href="{% url 'main:about.html'%}">Về chúng tôi</a></li>
+          <li><a href="{% url 'courses:courses'%}">Khóa học</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'courses:registered'%}">Khóa đã đăng ký</a></li>
+          {% endif %}
+          <li><a href="{% url 'main:trainers.html'%}">Giáo viên</a></li>
+          <li><a href="{% url 'main:contact.html'%}">Liên hệ</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="#">Xin chào {{user.last_name}}</a></li>
+          {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      {% if user.is_authenticated %}
+      <!-- .navbar -->
+      <a href="/logout" class="get-started-btn">Đăng xuất</a>
+      {%else%}
+      <div class="dropdown">
+        <a class="get-started-btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          Đăng ký
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="/register">Đăng ký</a></li>
+          <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- End Header -->
+  {% endblock header %}
+
+  {% block heroblock %}
+  {% endblock heroblock %}
+
+
+  {% block bodyblock %}
+  {% endblock bodyblock %}
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>LEAP</h3>
+            <p>
+              15/36B Nguyễn Thị Phố <br>
+              Tân Đông Hiệp, Dĩ An<br>
+              Bình Dương, Việt Nam <br><br>
+              <strong>Điện thoại:</strong> 0963 645 899<br>
+              <strong>Email:</strong> vuhien694@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Liên kết hữu ích</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Trang chủ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Về chúng tôi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Dịch vụ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Điều khoản dịch vụ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Chính sách quyền riêng tư</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Dịch vụ của chúng tôi</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Tiếng Anh trẻ em</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Tiếng Anh phổ thông</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Tiếng Anh giao tiếp</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Dịch thuật</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Luyện thi IELTS</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Đăng ký tin mới</h4>
+            <p>Đăng ký để nhận tin tức mới nhất từ chúng tôi.</p>
+            <form action="" method="post">
+              {% csrf_token %}
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>LEAP</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/leap.tienganhtreem/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <!-- Messenger Plugin chat Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Plugin chat code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "103572598059552");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v14.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'main/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'main/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'main/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+
+</body>
+
+</html>

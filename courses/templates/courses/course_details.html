@@ -1,0 +1,118 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block titleblock %}
+<title>Thông tin khóa học - LEAP</title>
+{% endblock titleblock %}
+
+{% block bodyblock %}
+<main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs" data-aos="fade-in">
+    <div class="container">
+      <h2>Thông tin khóa học</h2>
+      <p>
+        Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia
+        id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam
+        aperiam consequatur laboriosam nemo harum praesentium.
+      </p>
+    </div>
+  </div>
+  <!-- End Breadcrumbs -->
+
+  <!-- ======= Cource Details Section ======= -->
+  <section id="course-details" class="course-details">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-8">
+          <img src="{% static 'main/img/course_details.jpg' %}" class="img-fluid" alt=""/>
+          <h3>{{select_lop.ten_lop}}</h3>
+          <p>{{select_lop.description|safe}}</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Giáo viên</h5>
+            <p><a href="#">{{select_lop.teacher_id}}</a></p>
+          </div>
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Học phí</h5>
+            <p>{% load humanize %}{{select_lop.price|floatformat:0|intcomma}} VNĐ</p>
+          </div>
+
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Chỗ trống</h5>
+            <p>15</p>
+          </div>
+
+          <div class="course-info d-flex justify-content-between align-items-center">
+            <h5>Giờ học</h5>
+            <p>{{select_lop.hours1}} - {{select_lop.hours2}}</p>
+            <p style="text-align: right">
+              {{select_lop.days1}}<br />
+              {{select_lop.days2}}<br />
+              {{select_lop.days3}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Cource Details Section -->
+
+  <!-- ======= Cource Details Tabs Section ======= -->
+  <section id="cource-details-tabs" class="cource-details-tabs">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-3">
+          <ul class="nav nav-tabs flex-column">
+            {% for bai in lst_bai %}
+            <li class="nav-item">
+              <a class="nav-link {%if forloop.first%}active show{%endif%}" data-bs-toggle="tab" href="#tab-{{forloop.counter}}">{{bai.ten_bai}}</a>
+            </li> 
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-lg-9 mt-4 mt-lg-0">
+          <div class="tab-content">
+            {% for bai in lst_bai %}
+            <div class="tab-pane {%if forloop.first%}active show{%endif%}" id="tab-{{forloop.counter}}">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h4>Nội dung bài học</h4>
+                  <p class="fst-italic">{{bai.content|safe}}</p>
+
+                  <p>
+                    <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      Xem thử bài giảng
+                    </a>
+                  </p>
+
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                      {% video bai.lecture%}
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center" data-aos="fade-up" style="margin-top: 30px;">
+      <form action="{%url 'cart:cart_add' select_lop.id%}" method="POST">
+        {{cart_product_form}}
+        {% csrf_token %}
+        <input type="hidden" name="quantity" value="1" />
+        <button class="btn get-started-btn active-show" type="submit">
+          Mua khóa học
+        </button>
+      </form>
+    </div>
+  </section>
+  <!-- End Cource Details Tabs Section -->
+</main>
+{% endblock bodyblock %}

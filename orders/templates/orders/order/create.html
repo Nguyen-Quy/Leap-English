@@ -1,0 +1,72 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block titleblock %}
+<title>LEAP - Thanh toán</title>
+{% endblock %}
+
+{% block bodyblock %}
+<!-- Start Checkout -->
+<section class="shop checkout section">
+	<div class="container"style="margin-top: 50px;">
+		<form class="form" method="POST" action="{% url 'orders:order_create'%}">
+		<div class="row">
+			<!-- Form -->
+			<div class="col-lg-8 col-12">
+				<div class="checkout-form">
+					<h2>Thông tin khách hàng</h2>
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12 align-self-center">
+							<form method="POST" class="form-group">
+								{% csrf_token %}
+								{{form|crispy}}
+							</form>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<div class="col-lg-4 col-12">
+				<div class="order-details">
+					<!-- Order Widget -->
+					<div class="single-widget">
+						<h2>THÔNG TIN THANH TOÁN</h2>
+						<div class="content">
+							<ul>
+								{% for item in cart %}
+								<li>
+									{{ item.quantity }}x {{ item.product.ten_lop }}
+									<span>{% load humanize %}{{item.total_price|floatformat:0|intcomma}} VNĐ</span>
+								</li>
+								{% endfor %}
+							</ul>
+							<ul>
+
+									<hr />
+						
+								<li class="last">Tổng học phí:<span> {% load humanize %}{{cart.get_total_price|floatformat:0|intcomma}} VNĐ</span></li>
+							</ul>
+						</div>
+					</div>
+					<!--/ End Order Widget -->
+					<!-- Button Widget -->
+					<div class="single-widget get-button">
+						<div class="content">
+							<div class="button">
+								<button type="submit" class="btn get-started-btn">Thanh toán</button>
+								{% csrf_token %}
+							</div>
+						</div>
+					</div>
+					<!--/ End Button Widget -->
+				</div>
+			</div>
+		</div>		
+		</form>
+		<!--/ End Form -->
+	</div>
+</section>
+<!--/ End Checkout -->
+
+{% endblock %}

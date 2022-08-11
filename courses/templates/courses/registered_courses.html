@@ -1,0 +1,89 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block titleblock %}
+<title>LEAP - Khóa đã đăng ký</title>
+{% endblock %}
+
+{% block bodyblock %}
+<main id="main" data-aos="fade-in">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <h2>Các khóa mà bạn đã đăng ký</h2>
+      <p>Sau đây là danh sách các khóa học mà bạn <b> {{user.first_name}} {{user.last_name}} </b> đã đăng ký tại trung tâm.</p>
+    </div>
+  </div><!-- End Breadcrumbs -->
+  
+  
+  <!-- ======= Courses Section ======= -->
+  <section id="courses" class="courses">
+    <div class="container" data-aos="fade-up">
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        {% for item,n in list %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="course-item">
+            <img src="{% static 'main/img/course-1.jpg' %}" class="img-fluid" alt="...">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4>{{item.course_id}}</h4>
+                <p class="price">{% load humanize %}{{item.price|floatformat:0|intcomma}} VNĐ</p>
+              </div>
+              <h3 class="mb-3">{{item.ten_lop}}</h3>
+              <h6><strong>Ngày học:</strong> {{item.days1}}, {{item.days2}}, {{item.days3}}</h6>
+              <h6><strong>Lúc:</strong> {{item.hours1}} - {{item.hours2}}</h6>
+              <h6>Số khóa đăng ký: {{n.n}}</h6>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <img src="{% static 'main/img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
+                  <span>Giáo viên giảng dạy: {{item.teacher_id}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End Course Item-->
+        {% endfor %}
+      </div>
+    </div>
+  </section><!-- End Courses Section -->
+</main><!-- End #main -->
+{% endblock %}
+
+
+
+<section class="shop checkout section">
+  <div class="container" style="margin-top: 70px; max-height: 500px">
+    <div class="row">
+      <div class="col-lg-8 col-12">
+        <div class="checkout-form">
+          <h2>Cảm ơn quý khách</h2>
+          <p>
+            Quý khách <b> {{user.first_name}} {{user.last_name}} </b> đã đăng ký khóa học thành công.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="order-details">
+          <!-- Order Widget -->
+          <div class="single-widget">
+            <h2>THÔNG TIN LỚP HỌC</h2>
+            <div class="content">
+              <ul>
+                {% for item in c %}
+                  <li>Tên lớp: {{item.ten_lop}}</li>
+                  <li>Ngày học: {{item.days1}}, {{item.days2}}, {{item.days3}}</li>
+                  <li>Lúc: {{item.hours1}} - {{item.hours2}}</li>
+                  <li>Mã zoom: </li>
+                {% endfor %}
+                
+              </ul>
+            </div>
+            <a href="{% url 'main:index.html'%}" class="btn-get-started"
+              >Về trang chủ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

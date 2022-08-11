@@ -1,0 +1,306 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block titleblock %}
+<title>LEAP - Học ngoại ngữ trực tuyến</title>
+{% endblock titleblock %}
+
+
+{% block heroblock %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Học hôm nay,<br>Tiến bước ngày mai</h1>
+      <h2>Chúng tôi là những giáo viên tiếng Anh đầy nhiệt huyết và đam mê.</h2>
+
+      <a href="{% url 'courses:courses'%}" class="btn-get-started">Bắt đầu</a>
+    </div>
+  </section><!-- End Hero -->
+{% endblock heroblock %}
+
+
+{% block bodyblock %}
+{% if regis_result %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">Đăng ký thành công</div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+{% endif %}
+{% if username %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">Đăng nhập thành công</div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+{% endif %}
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'main/img/about.jpg'%}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Học tiếng Anh giao tiếp cùng LEAP English</h3>
+            <p class="fst-italic">
+              LEAP English cung cấp khóa học tiếng Anh trực tuyến cũng như trực tiếp, dành cho cả trẻ em và người lớn.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Giao tiếp một đối một với giáo viên và với các bạn cùng lớp, giúp nhau ngày càng tiến bộ.</li>
+              <li><i class="bi bi-check-circle"></i> Cá nhân hóa lộ trình học, đảm bảo tiến độ cũng như giúp học viên không chán nản.</li>
+              <li><i class="bi bi-check-circle"></i> Chương trình học được biên soạn bởi các giáo viên có nhiều kinh nghiệm, giúp người học tăng phản xạ nghe nói, nâng cao trình độ và sử dụng tiếng Anh như người bản xứ.</li>
+            </ul>
+            <p>
+              Chúng tôi tạo ra môi trường để mỗi học viên có thể thực hành nhiều hơn - giao tiếp, trò chuyện tiếng Anh một cách tự nhiên nhất.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Học sinh</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Khóa học</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Sự kiện</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Giáo viên</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Tại sao nên chọn LEAP?</h3>
+              <p>
+                Nhóm chúng tôi gồm những giáo viên tiếng Anh đầy nhiệt huyết và đam mê, với mong muốn mang lại tương lai tươi sáng cho mọi người.
+                Chúng tôi biên soạn và tổng hợp các phương pháp dạy học hiệu quả nhất, giúp các học viên có những giờ học nhẹ nhàng và vui vẻ nhưng vẫn nhận thấy sự tiến bộ.
+              </p>
+              <div class="text-center">
+                <a href="{% url 'main:about.html'%}" class="more-btn">Tìm hiểu thêm <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Giao tiếp tiếng Anh 1 đối 1</h4>
+                    <p>Thông qua các đoạn văn mẫu thường gặp</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Cá nhân hóa lộ trình học</h4>
+                    <p>Chương trình học được thiết kế riêng cho từng học viên với trình độ khác nhau</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>Chủ đề đa dạng</h4>
+                    <p>Có nhiều chủ đề được cập nhật liên tục</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-3 col-md-4">
+            <div class="icon-box">
+              <i class="ri-store-line" style="color: #ffbb2c;"></i>
+              <h3><a href="">Nhiệt huyết</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+              <h3><a href="">Tận tâm</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
+              <h3><a href="">Sáng tạo</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+            <div class="icon-box">
+              <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
+              <h3><a href="">Tự tin</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-database-2-line" style="color: #47aeff;"></i>
+              <h3><a href="">Truyền cảm hứng</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+              <h3><a href="">Kiên nhẫn</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+              <h3><a href="">Trách nhiệm</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
+              <h3><a href="">Nghiêm túc</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-anchor-line" style="color: #b2904f;"></i>
+              <h3><a href="">Thấu hiểu</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-disc-line" style="color: #b20969;"></i>
+              <h3><a href="">Kỷ luật</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-base-station-line" style="color: #ff5828;"></i>
+              <h3><a href="">Thân thiện</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 mt-4">
+            <div class="icon-box">
+              <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
+              <h3><a href="">Nhẹ nhàng</a></h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Các khóa học</h2>
+          <p>Khóa học thông dụng</p>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% for item in lst_khoahoc %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="course-item">
+              <img src="{{item.photo.url}}" class="img-fluid" alt="...">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{item.category_id}}</h4>
+                  <p class="price">{% load humanize %}{{item.course_price1|floatformat:0|intcomma}} - {% load humanize %}{{item.course_price2|floatformat:0|intcomma}} VNĐ</p>
+                </div>
+                <h3><a href="{% url 'courses:courses'%}">{{item.ten_khoahoc}}</a></h3>
+                <p>{{item.description|safe}}</p>
+                {% comment %}
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <img src="{% static 'main/img/trainers/trainer-2.jpg'%}" class="img-fluid" alt="">
+                    <span>{{item.teacher_id}}</span>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;50
+                    &nbsp;&nbsp;
+                    <i class="bx bx-heart"></i>&nbsp;65
+                  </div>
+                </div>
+                {% endcomment %}
+                
+              </div>
+              
+            </div>
+          </div> <!-- End Course Item-->
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Popular Courses Section -->
+
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Các giáo viên</h2>
+          <p>Giáo viên tài năng</p>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% for item in lst_teacher %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{{item.photo.url}}" class="img-fluid" alt="" style="height: 400px;width:auto">
+              <div class="member-content">
+                <h4>{{item.last_name}} {{item.first_name}}</h4>
+                <span>Teacher</span>
+                <p>
+                  {{item.description}}
+                </p>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {% endfor %}
+          
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section -->
+
+  </main><!-- End #main -->
+{% endblock bodyblock %}
