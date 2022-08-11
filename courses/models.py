@@ -2,7 +2,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from .myfields import FieldNgayTrongTuan as ntt
 import datetime
-from embed_video.fields import EmbedVideoField
+# from embed_video.fields import EmbedVideoField
 from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
